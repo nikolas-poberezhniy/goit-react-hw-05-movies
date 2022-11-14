@@ -4,7 +4,7 @@ import { useFetch } from 'hooks/useFetch';
 import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
-export const Movies = () => {
+const Movies = () => {
   const [searchLine, setSearchLine] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
@@ -38,14 +38,7 @@ export const Movies = () => {
           {data.results.length ? (
             data.results.map(item => {
               return (
-                <>
-                  <MovieGridItem
-                    key={item.id}
-                    data={item}
-                    location={location}
-                  />
-                  <br />
-                </>
+                <MovieGridItem key={item.id} data={item} location={location} />
               );
             })
           ) : (
@@ -58,3 +51,5 @@ export const Movies = () => {
     </>
   );
 };
+
+export default Movies;

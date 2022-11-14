@@ -4,7 +4,7 @@ import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { Link as StyledLink } from 'components/SharedLayout/SharedLayout.styled';
 import { useFetch } from 'hooks/useFetch';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   let { id } = useParams();
   const [
     { poster_path, genres, release_date, overview, title, vote_average },
@@ -19,8 +19,6 @@ export const MovieDetails = () => {
   return (
     release_date && (
       <>
-        {console.log(data)}
-
         <StyledLink to={location.state ? location.state.from : '/'}>
           Обратно
         </StyledLink>
@@ -35,7 +33,11 @@ export const MovieDetails = () => {
             <p>{overview}</p>
             <h3>Genres</h3>
             {genres.map(genre => {
-              return <span style={{ marginBottom: '5px' }}>{genre.name} </span>;
+              return (
+                <span key={genre.name} style={{ marginBottom: '5px' }}>
+                  {genre.name}{' '}
+                </span>
+              );
             })}
           </div>
         </div>
@@ -47,3 +49,5 @@ export const MovieDetails = () => {
     )
   );
 };
+
+export default MovieDetails;

@@ -5,7 +5,7 @@ import { useFetch } from 'hooks/useFetch';
 import { GridConteiner } from 'components/MovieGrid/MovieGrid';
 import { useLocation } from 'react-router-dom';
 
-export const Home = () => {
+const Home = () => {
   const [trendingFilmList, setTrendingFilmList] = useState([]);
   const [{ data } /*status */] = useFetch('trending');
   const location = useLocation();
@@ -27,3 +27,5 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;
