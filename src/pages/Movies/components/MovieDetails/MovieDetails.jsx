@@ -19,6 +19,7 @@ const MovieDetails = () => {
 
   return title ? (
     <>
+      {console.log(location.state)}
       <StyledLink to={location.state ? location.state.from : '/'}>
         Обратно
       </StyledLink>
@@ -42,8 +43,12 @@ const MovieDetails = () => {
         </div>
       </div>
       <br />
-      <StyledLink to="cast">Cast</StyledLink>
-      <StyledLink to="reviews">Reviews</StyledLink>
+      <StyledLink to="cast" state={location.state}>
+        Cast
+      </StyledLink>
+      <StyledLink to="reviews" state={location.state}>
+        Reviews
+      </StyledLink>
       <Outlet />
     </>
   ) : (
